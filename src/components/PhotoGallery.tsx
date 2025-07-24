@@ -1,0 +1,191 @@
+import { useState, useEffect, useRef } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+// Import sample images
+import sample1 from "@/assets/sample1.jpg";
+import sample2 from "@/assets/sample2.jpg";
+import sample3 from "@/assets/sample3.jpg";
+import sample4 from "@/assets/sample4.jpg";
+import sample5 from "@/assets/sample5.jpg";
+import sample6 from "@/assets/sample6.jpg";
+
+export interface Photo {
+  id: string;
+  src: string;
+  title: string;
+  description: string;
+  width: number;
+  height: number;
+}
+
+const initialPhotos: Photo[] = [
+  {
+    id: "1",
+    src: sample1,
+    title: "Modern Concrete Structure",
+    description: "A minimalist architectural masterpiece featuring clean concrete lines and strategic natural lighting. This building represents the essence of contemporary design with its bold geometric forms and thoughtful integration with the surrounding environment.",
+    width: 800,
+    height: 600,
+  },
+  {
+    id: "2",
+    src: sample2,
+    title: "Contemporary Glass Tower",
+    description: "An urban landmark showcasing the marriage of steel and glass in modern architecture. The evening lighting creates a dramatic interplay of reflections and transparency, highlighting the building's sophisticated facade system.",
+    width: 600,
+    height: 800,
+  },
+  {
+    id: "3",
+    src: sample3,
+    title: "Residential Modern Home",
+    description: "A perfect example of residential architecture that seamlessly blends natural materials with contemporary design principles. The integration of wooden accents with clean white surfaces creates a warm yet sophisticated living environment.",
+    width: 704,
+    height: 512,
+  },
+  {
+    id: "4",
+    src: sample4,
+    title: "Industrial Warehouse Conversion",
+    description: "A stunning transformation of industrial heritage into modern living space. The exposed brick and steel elements are complemented by strategic skylights that flood the interior with natural light, creating a perfect urban loft atmosphere.",
+    width: 900,
+    height: 600,
+  },
+  {
+    id: "5",
+    src: sample5,
+    title: "Modern Library Interior",
+    description: "An innovative approach to public space design featuring curved wooden walls and carefully planned reading areas. The architecture promotes both individual study and community interaction through its thoughtful spatial organization.",
+    width: 650,
+    height: 750,
+  },
+  {
+    id: "6",
+    src: sample6,
+    title: "Sustainable Green Building",
+    description: "A pioneering example of environmentally conscious architecture, featuring living walls and natural ventilation systems. This building demonstrates how modern construction can work in harmony with nature to create truly sustainable spaces.",
+    width: 550,
+    height: 700,
+  },
+];
+
+interface PhotoGalleryProps {
+  uploadedPhotos?: Photo[];
+}
+
+const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
+  const [zoom, setZoom] = useState(1.2); // Start zoomed in
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const zoomSpeed = 0.1;
+      const newZoom = Math.max(0.5, Math.min(3, zoom + (e.deltaY > 0 ? -zoomSpeed : zoomSpeed)));
+      setZoom(newZoom);
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+      return () => container.removeEventListener("wheel", handleWheel);
+    }
+  }, [zoom]);
+
+  const calculateLayout = () => {
+    const baseSize = 200;
+    const padding = 20;
+    const cols = 4;
+    const rows = Math.ceil(photos.length / cols);
+
+    return photos.map((photo, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
+      
+      // Vary sizes to create visual interest
+      const sizeMultiplier = [1.2, 0.8, 1.5, 1.0, 0.9, 1.3][index % 6];
+      const width = baseSize * sizeMultiplier * zoom;
+      const height = (baseSize * sizeMultiplier * zoom * photo.height) / photo.width;
+      
+      const x = col * (baseSize * 1.5 + padding) * zoom;
+      const y = row * (baseSize * 1.2 + padding) * zoom;
+
+      return {
+        ...photo,
+        style: {
+          position: "absolute" as const,
+          left: x,
+          top: y,
+          width,
+          height,
+        },
+      };
+    });
+  };
+
+  const layoutPhotos = calculateLayout();
+
+  return (
+    <>
+      <div
+        ref={containerRef}
+        className="photo-gallery w-full h-screen overflow-auto relative"
+        style={{ 
+          scrollBehavior: "smooth",
+          cursor: zoom < 1 ? "zoom-in" : zoom > 2 ? "zoom-out" : "grab"
+        }}
+      >
+        <div className="relative" style={{ width: "200vw", height: "200vh" }}>
+          <div className="absolute inset-0 flex items-center justify-center">
+            {layoutPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className="photo-item absolute rounded-lg overflow-hidden shadow-lg bg-white"
+                style={photo.style}
+                onClick={() => setSelectedPhoto(photo)}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  className="w-full h-full object-cover"
+                  draggable={false}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <Dialog open={!!selectedPhoto} onOpenChange={() => setSelectedPhoto(null)}>
+        <DialogContent className="photo-modal max-w-6xl w-[90vw] h-[80vh] p-0 bg-background/95">
+          {selectedPhoto && (
+            <div className="flex h-full">
+              <div className="w-1/3 p-6 border-r border-border">
+                <ScrollArea className="h-full">
+                  <h2 className="text-2xl font-bold mb-4">{selectedPhoto.title}</h2>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedPhoto.description}
+                  </p>
+                </ScrollArea>
+              </div>
+              <div className="w-2/3 p-4 flex items-center justify-center">
+                <ScrollArea className="h-full w-full">
+                  <img
+                    src={selectedPhoto.src}
+                    alt={selectedPhoto.title}
+                    className="max-w-full h-auto object-contain"
+                  />
+                </ScrollArea>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+export default PhotoGallery;
