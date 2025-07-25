@@ -78,6 +78,9 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(2.5); // Start heavily zoomed in on first photo
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
+  const [isPanning, setIsPanning] = useState(false);
+  const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -88,12 +91,37 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       setZoom(newZoom);
     };
 
+    const handleMouseDown = (e: MouseEvent) => {
+      setIsPanning(true);
+      setPanStart({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isPanning) return;
+      const deltaX = e.clientX - panStart.x;
+      const deltaY = e.clientY - panStart.y;
+      setPanOffset({ x: deltaX, y: deltaY });
+    };
+
+    const handleMouseUp = () => {
+      setIsPanning(false);
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", handleWheel, { passive: false });
-      return () => container.removeEventListener("wheel", handleWheel);
+      container.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      
+      return () => {
+        container.removeEventListener("wheel", handleWheel);
+        container.removeEventListener("mousedown", handleMouseDown);
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
     }
-  }, [zoom]);
+  }, [zoom, isPanning, panStart]);
 
   const calculateLayout = () => {
     const baseSize = 200;
@@ -135,11 +163,16 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
         className="photo-gallery w-full h-screen overflow-auto relative"
         style={{ 
           scrollBehavior: "smooth",
-          cursor: zoom < 1 ? "zoom-in" : zoom > 2 ? "zoom-out" : "grab"
+          cursor: isPanning ? "grabbing" : zoom < 1 ? "zoom-in" : zoom > 2 ? "zoom-out" : "grab"
         }}
       >
         <div className="relative" style={{ width: "200vw", height: "200vh" }}>
-          <div className="absolute inset-0 flex items-center justify-center" style={{ transform: "translate(-10%, -5%)" }}>
+          <div 
+            className="absolute inset-0 flex items-center justify-center" 
+            style={{ 
+              transform: `translate(calc(-10% + ${panOffset.x}px), calc(-5% + ${panOffset.y}px))` 
+            }}
+          >
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
@@ -171,14 +204,15 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
                   </p>
                 </ScrollArea>
               </div>
-              <div className="w-2/3 p-4 flex items-center justify-center">
-                <ScrollArea className="h-full w-full">
+              <div className="w-2/3 p-4 flex items-center justify-center bg-muted/20">
+                <div className="w-full h-full overflow-auto">
                   <img
                     src={selectedPhoto.src}
                     alt={selectedPhoto.title}
-                    className="max-w-full h-auto object-contain"
+                    className="w-full h-auto object-contain"
+                    style={{ maxHeight: "none" }}
                   />
-                </ScrollArea>
+                </div>
               </div>
             </div>
           )}
