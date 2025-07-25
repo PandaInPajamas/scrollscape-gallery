@@ -75,7 +75,7 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
-  const [zoom, setZoom] = useState(1.2); // Start zoomed in
+  const [zoom, setZoom] = useState(2.5); // Start heavily zoomed in on first photo
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -139,7 +139,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
         }}
       >
         <div className="relative" style={{ width: "200vw", height: "200vh" }}>
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center" style={{ transform: "translate(-10%, -5%)" }}>
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
