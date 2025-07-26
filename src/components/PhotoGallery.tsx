@@ -147,14 +147,14 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
-                className="photo-item absolute rounded-lg overflow-hidden shadow-lg bg-white"
+                className="photo-item absolute rounded-lg overflow-hidden shadow-lg bg-white select-none"
                 style={photo.style}
                 onClick={() => setSelectedPhoto(photo)}
               >
                 <img
                   src={photo.src}
                   alt={photo.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover select-none pointer-events-none"
                   draggable={false}
                 />
               </div>
