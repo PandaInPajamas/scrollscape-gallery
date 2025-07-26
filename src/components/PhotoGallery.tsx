@@ -98,7 +98,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
-      const sensitivity = 0.3; // Reduce pan sensitivity
+      const sensitivity = 0.1; // Further reduce pan sensitivity
       setPanOffset({
         x: (e.clientX - dragStart.x) * sensitivity,
         y: (e.clientY - dragStart.y) * sensitivity,
