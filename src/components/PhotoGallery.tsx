@@ -133,9 +133,6 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       <div
         ref={containerRef}
         className="photo-gallery w-full h-screen overflow-hidden relative"
-        style={{ 
-          cursor: zoom < 1 ? "zoom-in" : zoom > 2 ? "zoom-out" : "default"
-        }}
       >
         <div className="relative" style={{ width: "200vw", height: "200vh" }}>
           <div 
