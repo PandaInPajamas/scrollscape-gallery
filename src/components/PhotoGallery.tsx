@@ -93,15 +93,17 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
 
     const handleMouseDown = (e: MouseEvent) => {
       setIsDragging(true);
-      setDragStart({ x: e.clientX - panOffset.x, y: e.clientY - panOffset.y });
+      setDragStart({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
-      const sensitivity = 0.1; // Further reduce pan sensitivity
+      const sensitivity = 0.5; // Smoother sensitivity
+      const deltaX = (e.clientX - dragStart.x) * sensitivity;
+      const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset({
-        x: (e.clientX - dragStart.x) * sensitivity,
-        y: (e.clientY - dragStart.y) * sensitivity,
+        x: deltaX,
+        y: deltaY,
       });
     };
 
