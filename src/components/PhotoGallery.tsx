@@ -78,7 +78,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(2.3); // Start heavily zoomed in on first photo
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: -100, y: -100 });
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
