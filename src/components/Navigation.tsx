@@ -16,7 +16,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-xl font-bold hover:opacity-80 transition-opacity">
-            housebiz
+            chunkwunk
           </Link>
           <div className="flex items-center space-x-8">
             {navItems.map((item) => (
