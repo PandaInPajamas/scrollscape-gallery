@@ -75,10 +75,10 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
-  const [zoom, setZoom] = useState(2.6); // Start heavily zoomed in on first photo
+  const [zoom, setZoom] = useState(2.3); // Start heavily zoomed in on first photo
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [panOffset, setPanOffset] = useState({ x: -100, y: -100 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
@@ -102,7 +102,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
-      const sensitivity = 0.03;
+      const sensitivity = 0.05;
       const deltaX = (e.clientX - dragStart.x) * sensitivity;
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset({
