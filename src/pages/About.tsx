@@ -39,43 +39,6 @@ const About = () => {
               <li>• Support emerging architects and photographers</li>
             </ul>
           </div>
-       
-         {/* Our Team Section */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-semibold mb-8 text-center">Our Team</h2>
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* CEO */}
-              <div className="flex flex-col items-center text-center">
-                <Image
-                  src="/about.jpeg"
-                  alt="CEO"
-                  width={160}
-                  height={160}
-                  className="rounded-full mb-4 object-cover"
-                />
-                <h3 className="text-xl font-medium">Alex Morgan – CEO</h3>
-                <p className="text-muted-foreground mt-2">
-                  Alex leads the vision of our studio with a passion for storytelling through architecture. With over 15 years in design and photography, she ensures every project speaks volumes.
-                </p>
-              </div>
-
-              {/* CTO */}
-              <div className="flex flex-col items-center text-center">
-                <Image
-                  src="/about.jpeg"
-                  alt="CTO"
-                  width={160}
-                  height={160}
-                  className="rounded-full mb-4 object-cover"
-                />
-                <h3 className="text-xl font-medium">Jordan Lee – CTO</h3>
-                <p className="text-muted-foreground mt-2">
-                  Jordan oversees the technical direction of our platform, blending creativity with engineering to make architectural content accessible, scalable, and innovative.
-                </p>
-              </div>
-            </div>
-          </div>
-       
         </div>
       </div>
     </div>
