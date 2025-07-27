@@ -75,7 +75,7 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
-  const [zoom, setZoom] = useState(2.3); // Start heavily zoomed in on first photo
+  const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on first photo
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
