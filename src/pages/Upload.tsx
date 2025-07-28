@@ -53,11 +53,12 @@ const Upload = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 px-4">
-      <div className="container mx-auto max-w-2xl">
-        <h1 className="text-4xl font-bold mb-8 text-center">Upload Photo</h1>
+    <div className="min-h-screen bg-background pt-20">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-center mb-12">Upload Photo</h1>
         
-        <Card>
+        <div className="max-w-2xl mx-auto">
+          <Card>
           <CardHeader>
             <CardTitle>Share Your Architecture</CardTitle>
             <p className="text-muted-foreground">
@@ -117,7 +118,8 @@ const Upload = () => {
               </Button>
             </form>
           </CardContent>
-        </Card>
+          </Card>
+        </div>
       </div>
     </div>
   );

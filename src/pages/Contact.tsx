@@ -12,71 +12,73 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
+    <div className="min-h-screen bg-background pt-20">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold text-center mb-12">Contact Us</h1>
         
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Get In Touch</h2>
-            <p className="text-muted-foreground mb-8">
-              We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
-            
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold">Email</h3>
-                <p className="text-muted-foreground">hello@architecturegallery.com</p>
-              </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-2xl font-semibold mb-6">Get In Touch</h2>
+              <p className="text-muted-foreground mb-8">
+                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              </p>
               
-              <div>
-                <h3 className="font-semibold">Phone</h3>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold">Address</h3>
-                <p className="text-muted-foreground">
-                  123 Design Street<br />
-                  Creative District<br />
-                  New York, NY 10001
-                </p>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold">Email</h3>
+                  <p className="text-muted-foreground">hello@architecturegallery.com</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold">Phone</h3>
+                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold">Address</h3>
+                  <p className="text-muted-foreground">
+                    123 Design Street<br />
+                    Creative District<br />
+                    New York, NY 10001
+                  </p>
+                </div>
               </div>
             </div>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle>Send us a message</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" required />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" required />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" required />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" rows={5} required />
+                  </div>
+                  
+                  <Button type="submit" className="w-full">
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
-          
-          <Card>
-            <CardHeader>
-              <CardTitle>Send us a message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" required />
-                </div>
-                
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" required />
-                </div>
-                
-                <div>
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" required />
-                </div>
-                
-                <div>
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" rows={5} required />
-                </div>
-                
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>
