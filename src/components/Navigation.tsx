@@ -5,7 +5,8 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "Gallery" },
+    { path: "/", label: "Home" },
+    { path: "/gallery", label: "Gallery" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
     { path: "/upload", label: "Upload" },
