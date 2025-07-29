@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import PageHeader from "@/components/PageHeader";
 
 const Upload = () => {
   const [uploading, setUploading] = useState(false);
@@ -53,10 +54,9 @@ const Upload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <>
+      <PageHeader title="Upload Photo" />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-12">Upload Photo</h1>
-        
         <div className="max-w-2xl mx-auto">
           <Card>
           <CardHeader>
@@ -121,7 +121,7 @@ const Upload = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

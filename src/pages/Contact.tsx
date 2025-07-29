@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import PageHeader from "@/components/PageHeader";
 
 const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -12,10 +13,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <>
+      <PageHeader title="Contact Us" />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-12">Contact Us</h1>
-        
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
@@ -81,7 +81,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

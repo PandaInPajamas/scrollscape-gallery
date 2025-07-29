@@ -1,9 +1,10 @@
+import PageHeader from "@/components/PageHeader";
+
 const About = () => {
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <>
+      <PageHeader title="About Us" />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-12">About Us</h1>
-        
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg mx-auto">
             <p className="text-lg text-muted-foreground mb-6">
@@ -74,7 +75,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

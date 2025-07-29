@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import PageHeader from "@/components/PageHeader";
 
 // Import sample images
 import sample1 from "@/assets/sample1.jpg";
@@ -74,10 +75,9 @@ const Gallery = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   return (
-    <div className="min-h-screen bg-background pt-20">
+    <>
+      <PageHeader title="Gallery" />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-12">Gallery</h1>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {photos.map((photo) => (
             <div
@@ -124,7 +124,7 @@ const Gallery = () => {
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 };
 
