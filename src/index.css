@@ -101,7 +101,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    overflow-y: scroll;
+    overflow-y: auto;
+    /* Hide scrollbar but allow scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   /* Custom styles for photo gallery */
