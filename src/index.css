@@ -112,6 +112,16 @@ All colors MUST be HSL.
     display: none;
   }
 
+  /* Hide scrollbars for all elements */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
   /* Custom styles for photo gallery */
   .photo-gallery {
     transition: transform 0.3s ease;
