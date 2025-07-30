@@ -105,10 +105,11 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const sensitivity = 0.05;
       const deltaX = (e.clientX - dragStart.x) * sensitivity;
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
-      setPanOffset({
-        x: deltaX,
-        y: deltaY,
-      });
+      setPanOffset(prev => ({
+        x: prev.x + deltaX,
+        y: prev.y + deltaY,
+      }));
+      setDragStart({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseUp = () => {
