@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import ImageModal, { Photo } from "@/components/ImageModal";
 import PageHeader from "@/components/PageHeader";
 
 // Import sample images
@@ -11,14 +10,6 @@ import sample4 from "@/assets/sample4.jpg";
 import sample5 from "@/assets/sample5.jpg";
 import sample6 from "@/assets/sample6.jpg";
 
-interface Photo {
-  id: string;
-  src: string;
-  title: string;
-  description: string;
-  width: number;
-  height: number;
-}
 
 const photos: Photo[] = [
   {
@@ -105,25 +96,10 @@ const Gallery = () => {
         </div>
       </div>
 
-      <Dialog open={!!selectedPhoto} onOpenChange={() => setSelectedPhoto(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-          {selectedPhoto && (
-            <ScrollArea className="max-h-[90vh]">
-              <div className="p-6">
-                <img
-                  src={selectedPhoto.src}
-                  alt={selectedPhoto.title}
-                  className="w-full h-auto rounded-lg mb-6"
-                />
-                <h2 className="text-2xl font-bold mb-4">{selectedPhoto.title}</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  {selectedPhoto.description}
-                </p>
-              </div>
-            </ScrollArea>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ImageModal 
+        photo={selectedPhoto} 
+        onClose={() => setSelectedPhoto(null)} 
+      />
     </>
   );
 };

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import ImageModal, { Photo } from "@/components/ImageModal";
 
 // Import sample images
 import sample1 from "@/assets/sample1.jpg";
@@ -10,14 +9,6 @@ import sample4 from "@/assets/sample4.jpg";
 import sample5 from "@/assets/sample5.jpg";
 import sample6 from "@/assets/sample6.jpg";
 
-export interface Photo {
-  id: string;
-  src: string;
-  title: string;
-  description: string;
-  width: number;
-  height: number;
-}
 
 const initialPhotos: Photo[] = [
   {
@@ -200,31 +191,10 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
         </div>
       </div>
 
-      <Dialog open={!!selectedPhoto} onOpenChange={() => setSelectedPhoto(null)}>
-        <DialogContent className="photo-modal max-w-6xl w-[90vw] h-[80vh] p-0 bg-background/95">
-          {selectedPhoto && (
-            <div className="flex h-full">
-              <div className="w-1/3 p-6 border-r border-border">
-                <ScrollArea className="h-full">
-                  <h2 className="text-2xl font-bold mb-4">{selectedPhoto.title}</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {selectedPhoto.description}
-                  </p>
-                </ScrollArea>
-              </div>
-              <div className="w-2/3 p-4 flex items-center justify-center">
-                <ScrollArea className="h-full w-full">
-                  <img
-                    src={selectedPhoto.src}
-                    alt={selectedPhoto.title}
-                    className="max-w-full h-auto object-contain"
-                  />
-                </ScrollArea>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ImageModal 
+        photo={selectedPhoto} 
+        onClose={() => setSelectedPhoto(null)} 
+      />
     </>
   );
 };
