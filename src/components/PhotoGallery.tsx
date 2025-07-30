@@ -75,10 +75,10 @@ interface PhotoGalleryProps {
 }
 
 const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
-  const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on first photo
+  const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [panOffset, setPanOffset] = useState({ x: -15, y: 0 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
