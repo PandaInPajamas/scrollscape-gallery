@@ -97,10 +97,15 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const sensitivity = 0.05;
       const deltaX = (e.clientX - dragStart.x) * sensitivity;
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
-      setPanOffset(prev => ({
-        x: prev.x + deltaX,
-        y: prev.y + deltaY,
-      }));
+      setPanOffset(prev => {
+        const newOffset = {
+          x: prev.x + deltaX,
+          y: prev.y + deltaY,
+        };
+        // Dispatch custom event for background parallax
+        window.dispatchEvent(new CustomEvent('panUpdate', { detail: newOffset }));
+        return newOffset;
+      });
       setDragStart({ x: e.clientX, y: e.clientY });
     };
 
