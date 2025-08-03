@@ -52,9 +52,9 @@ const About = () => {
                     alt="CEO"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">Alex Morgan – CEO</h3>
+                  <h3 className="text-xl font-medium">diddy – CEO</h3>
                   <p className="text-muted-foreground mt-2">
-                    Alex leads the vision of our studio with a passion for storytelling through architecture. With over 15 years in design and photography, she ensures every project speaks volumes.
+                    he leads the vision of our studio with a passion for storytelling through architecture. With over 15 years in design and photography, she ensures every project speaks volumes.
                   </p>
                 </div>
 
@@ -65,9 +65,9 @@ const About = () => {
                     alt="CTO"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">Jordan Lee – CTO</h3>
+                  <h3 className="text-xl font-medium">bob marley – CTO</h3>
                   <p className="text-muted-foreground mt-2">
-                    Jordan oversees the technical direction of our platform, blending creativity with engineering to make architectural content accessible, scalable, and innovative.
+                    he oversees the technical direction of our platform, blending creativity with engineering to make architectural content accessible, scalable, and innovative.
                   </p>
                 </div>
               </div>
