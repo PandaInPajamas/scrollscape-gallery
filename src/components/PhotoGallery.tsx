@@ -69,7 +69,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: -15, y: 0 }); // Center on sample 2 image
+  const [panOffset, setPanOffset] = useState({ x: -179, y: -399 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
@@ -159,8 +159,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const parallaxMultiplierY = [0.3, -0.5, 0.6, -0.4, 0.7, -0.2][index % 6];
 
       // Apply parallax effect based on pan position
-      const parallaxX = panOffset.x * parallaxMultiplierX * 2 * (1 + Math.abs(distanceFromCenterX) * 0.5);
-      const parallaxY = panOffset.y * parallaxMultiplierY * 2 * (1 + Math.abs(distanceFromCenterY) * 0.5);
+      const parallaxX = panOffset.x * parallaxMultiplierX * 2 * (1 + Math.abs(distanceFromCenterX) * 0.1);
+      const parallaxY = panOffset.y * parallaxMultiplierY * 2 * (1 + Math.abs(distanceFromCenterY) * 0.1);
 
       const x = baseX + parallaxX;
       const y = baseY + parallaxY;
