@@ -72,7 +72,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [panOffset, setPanOffset] = useState({ x: -15, y: 0 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -93,17 +93,6 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Update mouse position for parallax effect
-      const container = containerRef.current;
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const mouseX = (e.clientX - rect.left - centerX) / centerX;
-        const mouseY = (e.clientY - rect.top - centerY) / centerY;
-        setMousePosition({ x: mouseX, y: mouseY });
-      }
-
       if (!isDragging) return;
       const sensitivity = 0.05;
       const deltaX = (e.clientX - dragStart.x) * sensitivity;
@@ -164,9 +153,9 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const parallaxMultiplierX = [0.5, -0.3, 0.8, -0.6, 0.4, -0.7][index % 6];
       const parallaxMultiplierY = [0.3, -0.5, 0.6, -0.4, 0.7, -0.2][index % 6];
 
-      // Apply parallax effect based on mouse position
-      const parallaxX = mousePosition.x * parallaxMultiplierX * 30 * (1 + Math.abs(distanceFromCenterX) * 0.5);
-      const parallaxY = mousePosition.y * parallaxMultiplierY * 30 * (1 + Math.abs(distanceFromCenterY) * 0.5);
+      // Apply parallax effect based on pan position
+      const parallaxX = panOffset.x * parallaxMultiplierX * 2 * (1 + Math.abs(distanceFromCenterX) * 0.5);
+      const parallaxY = panOffset.y * parallaxMultiplierY * 2 * (1 + Math.abs(distanceFromCenterY) * 0.5);
 
       const x = baseX + parallaxX;
       const y = baseY + parallaxY;
