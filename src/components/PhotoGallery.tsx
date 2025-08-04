@@ -159,8 +159,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const parallaxMultiplierY = [0.3, -0.5, 0.6, -0.4, 0.7, -0.2][index % 6];
 
       // Apply parallax effect based on pan position
-      const parallaxX = panOffset.x * parallaxMultiplierX * 2 * (1 + Math.abs(distanceFromCenterX) * 0.1);
-      const parallaxY = panOffset.y * parallaxMultiplierY * 2 * (1 + Math.abs(distanceFromCenterY) * 0.1);
+      const parallaxX = panOffset.x * parallaxMultiplierX * 0.5 * (1 + Math.abs(distanceFromCenterX) * 0.1);
+      const parallaxY = panOffset.y * parallaxMultiplierY * 0.5 * (1 + Math.abs(distanceFromCenterY) * 0.1);
 
       const x = baseX + parallaxX;
       const y = baseY + parallaxY;
