@@ -69,47 +69,11 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [panOffset, setPanOffset] = useState({ x: -6.5, y: 15 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Calculate initial centering based on screen size
-  useEffect(() => {
-    const calculateInitialCenter = () => {
-      if (!containerRef.current) return;
-      
-      const containerWidth = containerRef.current.clientWidth;
-      const containerHeight = containerRef.current.clientHeight;
-      
-      // Calculate pan offset to center sample2 (index 1) consistently
-      const baseSize = 200;
-      const cols = 4;
-      const sample2Col = 1; // sample2 is at index 1, so column 1
-      const sample2Row = 0; // sample2 is in the first row
-      
-      // Calculate where sample2 would be positioned
-      const sample2X = sample2Col * (baseSize * 1.5 + 20) * zoom;
-      const sample2Y = sample2Row * (baseSize * 1.2 + 20) * zoom;
-      
-      // Calculate offset needed to center sample2 in the viewport
-      const centerX = containerWidth / 2;
-      const centerY = containerHeight / 2;
-      
-      // Convert pixel offset to percentage offset
-      const panX = ((centerX - sample2X) / containerWidth) * 20; // Scale factor
-      const panY = ((centerY - sample2Y) / containerHeight) * 20; // Scale factor
-      
-      setPanOffset({ x: panX, y: panY });
-    };
-
-    // Calculate on mount and resize
-    calculateInitialCenter();
-    window.addEventListener('resize', calculateInitialCenter);
-    
-    return () => window.removeEventListener('resize', calculateInitialCenter);
-  }, [zoom]);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
