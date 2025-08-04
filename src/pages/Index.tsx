@@ -17,12 +17,14 @@ const Index = () => {
 
   return (
     <div 
-      className="relative w-full h-screen bg-background"
+      className="relative w-full h-screen"
       style={{
+        backgroundColor: '#f0eee9',
         backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundBlendMode: 'overlay',
         transform: `translate(${panOffset.x * 0.5}px, ${panOffset.y * 0.5}px)`,
         transition: 'transform 0.3s ease-out'
       }}
