@@ -69,44 +69,11 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 }); // Will be calculated dynamically
+  const [panOffset, setPanOffset] = useState({ x: -6.5, y: 15 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Calculate initial offset to center sample2 dynamically
-  useEffect(() => {
-    const calculateInitialOffset = () => {
-      if (!containerRef.current) return;
-      
-      const containerWidth = containerRef.current.clientWidth;
-      const containerHeight = containerRef.current.clientHeight;
-      
-      // Sample2 is at index 1
-      const sample2Index = 1;
-      const baseSize = 200;
-      const padding = 20;
-      const cols = 4;
-      
-      const col = sample2Index % cols;
-      const row = Math.floor(sample2Index / cols);
-      
-      // Calculate sample2's position
-      const baseX = col * (baseSize * 1.5 + padding) * zoom;
-      const baseY = row * (baseSize * 1.2 + padding) * zoom;
-      
-      // Calculate offset needed to center sample2 on screen
-      const offsetX = (containerWidth / 2 - baseX) / containerWidth * 100;
-      const offsetY = (containerHeight / 2 - baseY) / containerHeight * 100;
-      
-      setPanOffset({ x: offsetX, y: offsetY });
-    };
-    
-    calculateInitialOffset();
-    window.addEventListener('resize', calculateInitialOffset);
-    return () => window.removeEventListener('resize', calculateInitialOffset);
-  }, [zoom]);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
