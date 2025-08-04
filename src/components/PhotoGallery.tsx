@@ -200,7 +200,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
-                className={`photo-item absolute rounded-lg overflow-hidden shadow-lg bg-white select-none ${
+                className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
                   photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
                 }`}
                 style={photo.style}
