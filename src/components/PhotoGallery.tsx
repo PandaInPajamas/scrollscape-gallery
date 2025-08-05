@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import ImageModal, { Photo } from "@/components/ImageModal";
 
 // Import sample images
@@ -254,47 +254,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [panOffset, setPanOffset] = useState({ x: -6.5, y: 15 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const [visibleImages, setVisibleImages] = useState<Set<string>>(new Set());
   
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const photoId = entry.target.getAttribute('data-photo-id');
-          if (photoId) {
-            if (entry.isIntersecting || entry.intersectionRatio > 0) {
-              setVisibleImages(prev => new Set([...prev, photoId]));
-            } else {
-              setVisibleImages(prev => {
-                const newSet = new Set(prev);
-                newSet.delete(photoId);
-                return newSet;
-              });
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '200px', // Load images 200px before they come into view
-        threshold: 0
-      }
-    );
-
-    imageRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, [photos]);
-
-  const handleImageLoad = useCallback((photoId: string) => {
-    setLoadedImages(prev => new Set([...prev, photoId]));
-  }, []);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -421,45 +382,23 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
               transform: `translate(${-10 + panOffset.x}%, ${-5 + panOffset.y}%)` 
             }}
           >
-            {layoutPhotos.map((photo) => {
-              const isVisible = visibleImages.has(photo.id);
-              const isLoaded = loadedImages.has(photo.id);
-              
-              return (
-                <div
-                  key={photo.id}
-                  ref={(el) => {
-                    if (el) {
-                      imageRefs.current.set(photo.id, el);
-                      el.setAttribute('data-photo-id', photo.id);
-                    }
-                  }}
-                  className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
-                    photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
-                  }`}
-                  style={photo.style}
-                  onClick={photo.id === '2' ? undefined : () => setSelectedPhoto(photo)}
-                >
-                  {isVisible && (
-                    <img
-                      src={photo.src}
-                      alt={photo.title}
-                      className={`w-full h-full object-cover select-none pointer-events-none transition-opacity duration-300 ${
-                        isLoaded ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      draggable={false}
-                      onLoad={() => handleImageLoad(photo.id)}
-                      loading="lazy"
-                    />
-                  )}
-                  {!isLoaded && isVisible && (
-                    <div className="w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
-                      <div className="w-8 h-8 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+            {layoutPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
+                  photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
+                }`}
+                style={photo.style}
+                onClick={photo.id === '2' ? undefined : () => setSelectedPhoto(photo)}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  className="w-full h-full object-cover select-none pointer-events-none"
+                  draggable={false}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
