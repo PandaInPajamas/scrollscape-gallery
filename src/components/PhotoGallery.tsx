@@ -261,7 +261,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       const zoomSpeed = 0.1;
-      const newZoom = Math.max(0.8, Math.min(2.2, zoom + (e.deltaY > 0 ? -zoomSpeed : zoomSpeed)));
+      const newZoom = Math.max(1, Math.min(2, zoom + (e.deltaY > 0 ? -zoomSpeed : zoomSpeed)));
       setZoom(newZoom);
     };
 
