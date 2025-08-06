@@ -281,8 +281,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset(prev => {
         const newOffset = {
-          x: Math.max(-50, Math.min(50, prev.x + deltaX)),
-          y: Math.max(-50, Math.min(50, prev.y + deltaY)),
+          x: Math.max(-50, Math.min(0, prev.x + deltaX)),
+          y: Math.max(-50, Math.min(0, prev.y + deltaY)),
         };
         // Dispatch custom event for background parallax
         window.dispatchEvent(new CustomEvent('panUpdate', { detail: newOffset }));
