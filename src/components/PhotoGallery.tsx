@@ -317,12 +317,6 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     const cols = 6; // Increased columns to accommodate more photos
     const rows = Math.ceil(photos.length / cols);
 
-    // Calculate grid dimensions for centering
-    const gridWidth = cols * (baseSize * 1.5 + padding) * zoom;
-    const gridHeight = rows * (baseSize * 1.2 + padding) * zoom;
-    const offsetX = -gridWidth / 2;
-    const offsetY = -gridHeight / 2;
-
     return photos.map((photo, index) => {
       const col = index % cols;
       const row = Math.floor(index / cols);
@@ -333,9 +327,9 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const width = baseSize * sizeMultiplier * zoom;
       const height = (baseSize * sizeMultiplier * zoom * photo.height) / photo.width;
       
-      // Base positions centered around 0,0
-      const baseX = col * (baseSize * 1.5 + padding) * zoom + offsetX;
-      const baseY = row * (baseSize * 1.2 + padding) * zoom + offsetY;
+      // Base positions
+      const baseX = col * (baseSize * 1.5 + padding) * zoom;
+      const baseY = row * (baseSize * 1.2 + padding) * zoom;
 
       // Calculate distance from center for parallax effect
       const centerCol = (cols - 1) / 2;
