@@ -280,13 +280,9 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const deltaX = (e.clientX - dragStart.x) * sensitivity;
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset(prev => {
-        // Calculate dynamic bounds based on zoom level
-        const zoomFactor = zoom;
-        const maxPanRange = 30 * zoomFactor; // Adjust range based on zoom
-        
         const newOffset = {
-          x: Math.max(-maxPanRange, Math.min(maxPanRange, prev.x + deltaX)),
-          y: Math.max(-maxPanRange, Math.min(maxPanRange, prev.y + deltaY)),
+          x: Math.max(-50, Math.min(0, prev.x + deltaX)),
+          y: Math.max(-50, Math.min(0, prev.y + deltaY)),
         };
         // Dispatch custom event for background parallax
         window.dispatchEvent(new CustomEvent('panUpdate', { detail: newOffset }));
