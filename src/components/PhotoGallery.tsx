@@ -348,7 +348,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const parallaxY = panOffset.y * parallaxMultiplierY * 0.5 * (1 + Math.abs(distanceFromCenterY) * 0.1);
 
       const x = baseX + parallaxX - 500;
-      const y = baseY + parallaxY + 600;
+      const y = baseY + parallaxY + 600 - 1000;
 
       return {
         ...photo,
