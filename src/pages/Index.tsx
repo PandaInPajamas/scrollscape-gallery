@@ -20,9 +20,9 @@ const Index = () => {
       className="relative w-full h-screen bg-background"
       style={{
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
+        backgroundSize: '1000px 1000px',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundRepeat: 'repeat',
         transform: `translate(${panOffset.x * 0.5}px, ${panOffset.y * 0.5}px)`,
         transition: 'transform 0.3s ease-out'
       }}
