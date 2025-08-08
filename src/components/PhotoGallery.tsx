@@ -266,13 +266,9 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     };
 
     const handleMouseDown = (e: MouseEvent) => {
-      // Only allow panning if clicking on the background (not on images or interactive elements)
+      // Only allow panning if clicking on the background (not on images)
       const target = e.target as HTMLElement;
-      if (target.closest('.photo-item') || 
-          target.closest('button') || 
-          target.closest('a') || 
-          target.closest('input') || 
-          target.closest('[role="button"]')) return;
+      if (target.closest('.photo-item')) return;
       
       setIsDragging(true);
       setDragStart({ x: e.clientX, y: e.clientY });
@@ -302,13 +298,13 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", handleWheel, { passive: false });
-      document.addEventListener("mousedown", handleMouseDown);
+      container.addEventListener("mousedown", handleMouseDown);
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
       
       return () => {
         container.removeEventListener("wheel", handleWheel);
-        document.removeEventListener("mousedown", handleMouseDown);
+        container.removeEventListener("mousedown", handleMouseDown);
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
       };
