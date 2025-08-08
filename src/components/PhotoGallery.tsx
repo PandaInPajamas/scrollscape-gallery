@@ -266,9 +266,13 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     };
 
     const handleMouseDown = (e: MouseEvent) => {
-      // Only allow panning if clicking on the background (not on images)
+      // Only allow panning if clicking on the background (not on images or interactive elements)
       const target = e.target as HTMLElement;
-      if (target.closest('.photo-item')) return;
+      if (target.closest('.photo-item') || 
+          target.closest('button') || 
+          target.closest('a') || 
+          target.closest('input') || 
+          target.closest('[role="button"]')) return;
       
       setIsDragging(true);
       setDragStart({ x: e.clientX, y: e.clientY });
@@ -281,8 +285,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset(prev => {
         const newOffset = {
-          x: Math.max(-window.innerWidth / 10, Math.min(window.innerWidth / 10, prev.x + deltaX)),
-          y: Math.max(-window.innerHeight / 10, Math.min(window.innerHeight / 10, prev.y + deltaY)),
+          x: Math.max(-80, Math.min(50, prev.x + deltaX)),
+          y: Math.max(-120, Math.min(50, prev.y + deltaY)),
         };
         // Dispatch custom event for background parallax
         window.dispatchEvent(new CustomEvent('panUpdate', { detail: newOffset }));
@@ -298,13 +302,13 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     const container = containerRef.current;
     if (container) {
       container.addEventListener("wheel", handleWheel, { passive: false });
-      container.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mousedown", handleMouseDown);
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
       
       return () => {
         container.removeEventListener("wheel", handleWheel);
-        container.removeEventListener("mousedown", handleMouseDown);
+        document.removeEventListener("mousedown", handleMouseDown);
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
       };
