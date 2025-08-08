@@ -281,8 +281,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const deltaY = (e.clientY - dragStart.y) * sensitivity;
       setPanOffset(prev => {
         const newOffset = {
-          x: Math.max(-window.innerWidth / 10, Math.min(window.innerWidth / 10, prev.x + deltaX)),
-          y: Math.max(-window.innerHeight / 10, Math.min(window.innerHeight / 10, prev.y + deltaY)),
+          x: Math.max(-80, Math.min(50, prev.x + deltaX)),
+          y: Math.max(-120, Math.min(50, prev.y + deltaY)),
         };
         // Dispatch custom event for background parallax
         window.dispatchEvent(new CustomEvent('panUpdate', { detail: newOffset }));
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "calc(200vw + 1000px)", height: "calc(200vh + 1000px)" }}>
+        <div className="relative" style={{ width: "200vw", height: "200vh" }}>
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
