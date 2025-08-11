@@ -314,7 +314,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const calculateLayout = () => {
     const baseSize = 200;
     const padding = 20;
-    const cols = 6; // Increased columns to accommodate more photos
+    const cols = 5; // Increased columns to accommodate more photos
     const rows = Math.ceil(photos.length / cols);
 
     return photos.map((photo, index) => {
@@ -376,12 +376,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
         }}
       >
         <div className="relative" style={{ width: "200vw", height: "200vh" }}>
-          <div 
-            className="absolute inset-0 flex items-center justify-center" 
-            style={{ 
-              transform: `translate(${-10 + panOffset.x}%, ${-5 + panOffset.y}%)` 
-            }}
-          >
+          <div className="absolute inset-0 flex items-center justify-center">
+
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
