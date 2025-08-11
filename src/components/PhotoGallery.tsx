@@ -375,23 +375,32 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        {layoutPhotos.map((photo) => (
-          <div
-            key={photo.id}
-            className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
-              photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
-            }`}
-            style={photo.style}
-            onClick={photo.id === '2' ? undefined : () => setSelectedPhoto(photo)}
+        <div className="relative" style={{ width: "200vw", height: "200vh" }}>
+          <div 
+            className="absolute inset-0 flex items-center justify-center" 
+            style={{ 
+              transform: `translate(${-10 + panOffset.x}%, ${-5 + panOffset.y}%)` 
+            }}
           >
-            <img
-              src={photo.src}
-              alt={photo.title}
-              className="w-full h-full object-cover select-none pointer-events-none"
-              draggable={false}
-            />
+            {layoutPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
+                  photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
+                }`}
+                style={photo.style}
+                onClick={photo.id === '2' ? undefined : () => setSelectedPhoto(photo)}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  className="w-full h-full object-cover select-none pointer-events-none"
+                  draggable={false}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
 
       <ImageModal 
