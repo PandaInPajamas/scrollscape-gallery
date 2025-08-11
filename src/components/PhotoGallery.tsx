@@ -375,9 +375,13 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "200vw", height: "200vh" }}>
-          <div className="absolute inset-0 flex items-center justify-center">
-
+        <div className="relative" style={{ width: "800vw", height: "800vh" }}>
+          <div 
+            className="absolute inset-0 flex items-center justify-center" 
+            style={{ 
+              transform: `translate(${-10 + panOffset.x}%, ${-5 + panOffset.y}%)` 
+            }}
+          >
             {layoutPhotos.map((photo) => (
               <div
                 key={photo.id}
