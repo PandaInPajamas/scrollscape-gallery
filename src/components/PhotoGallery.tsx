@@ -370,7 +370,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     <>
       <div
         ref={containerRef}
-        className="photo-gallery fixed inset-0 w-screen h-screen overflow-hidden"
+        className="photo-gallery w-full h-screen overflow-hidden relative"
         style={{ 
           cursor: isDragging ? "grabbing" : "default"
         }}
