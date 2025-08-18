@@ -42,8 +42,8 @@ const initialPhotos: Photo[] = [
     height: 600,
   },
   {
-    id: "2",
-    src: opera15,
+    id: "13",
+    src: sample2,
     title: "Contemporary Glass Tower",
     description: "An urban landmark showcasing the marriage of steel and glass in modern architecture. The evening lighting creates a dramatic interplay of reflections and transparency, highlighting the building's sophisticated facade system.",
     width: 600,
@@ -130,8 +130,8 @@ const initialPhotos: Photo[] = [
     height: 600,
   },
   {
-    id: "13",
-    src: sample2,
+    id: "2",
+    src: opera15,
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
     width: 600,
