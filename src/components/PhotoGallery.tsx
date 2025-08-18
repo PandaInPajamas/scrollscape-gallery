@@ -43,7 +43,7 @@ const initialPhotos: Photo[] = [
   },
   {
     id: "2",
-    src: bench3,
+    src: opera15,
     title: "Contemporary Glass Tower",
     description: "An urban landmark showcasing the marriage of steel and glass in modern architecture. The evening lighting creates a dramatic interplay of reflections and transparency, highlighting the building's sophisticated facade system.",
     width: 600,
@@ -91,7 +91,7 @@ const initialPhotos: Photo[] = [
   },
   {
     id: "8",
-    src: sample2,
+    src: bench3,
     title: "MORETHANVIZ Bench Project 3",
     description: "An exploration of seating as sculptural intervention in public space. The design challenges traditional notions of urban furniture while maintaining comfort and accessibility.",
     width: 750,
@@ -131,7 +131,7 @@ const initialPhotos: Photo[] = [
   },
   {
     id: "13",
-    src: opera15,
+    src: sample2,
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
     width: 800,
