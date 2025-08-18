@@ -3,7 +3,7 @@ import ImageModal, { Photo } from "@/components/ImageModal";
 
 // Import sample images
 import sample1 from "@/assets/sample1.jpg";
-import sample2 from "@/assets/sample2.jpg";
+import sample2 from "@/assets/2020_MORETHANVIZ_OPERA_13_HQ.jpg";
 import sample3 from "@/assets/sample3.jpg";
 import sample4 from "@/assets/sample4.jpg";
 import sample5 from "@/assets/sample5.jpg";
@@ -15,7 +15,7 @@ import bench3 from "@/assets/2020_MORETHANVIZ_BENCH_3_HQ.jpg";
 import opera01 from "@/assets/2020_MORETHANVIZ_OPERA_01_HQ.jpg";
 import opera07 from "@/assets/2020_MORETHANVIZ_OPERA_07_HQ.jpg";
 import opera09 from "@/assets/2020_MORETHANVIZ_OPERA_09_LQ.jpg";
-import opera13 from "@/assets/2020_MORETHANVIZ_OPERA_13_HQ.jpg";
+import opera13 from "@/assets/sample2.jpg";
 import opera15 from "@/assets/2020_MORETHANVIZ_OPERA_15_HQ.jpg";
 import opera18 from "@/assets/2020_MORETHANVIZ_OPERA_18_HQ.jpg";
 import opera21 from "@/assets/2020_MORETHANVIZ_OPERA_21_HQ.jpg";
@@ -79,7 +79,7 @@ const initialPhotos: Photo[] = [
     title: "Sustainable Green Building",
     description: "A pioneering example of environmentally conscious architecture, featuring living walls and natural ventilation systems. This building demonstrates how modern construction can work in harmony with nature to create truly sustainable spaces.",
     width: 550,
-    height: 700,
+    height: 600,
   },
   {
     id: "7",
@@ -135,7 +135,7 @@ const initialPhotos: Photo[] = [
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
     width: 600,
-    height: 800,
+    height: 650,
   },
   {
     id: "14",
@@ -386,10 +386,10 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
               <div
                 key={photo.id}
                 className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
-                  photo.id === '2' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
+                  photo.id === '13' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
                 }`}
                 style={photo.style}
-                onClick={photo.id === '2' ? undefined : () => setSelectedPhoto(photo)}
+                onClick={photo.id === '13' ? undefined : () => setSelectedPhoto(photo)}
               >
                 <img
                   src={photo.src}
