@@ -95,7 +95,7 @@ const initialPhotos: Photo[] = [
     title: "MORETHANVIZ Bench Project 3",
     description: "An exploration of seating as sculptural intervention in public space. The design challenges traditional notions of urban furniture while maintaining comfort and accessibility.",
     width: 750,
-    height: 550,
+    height: 800,
   },
   {
     id: "9",
