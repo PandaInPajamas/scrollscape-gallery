@@ -24,7 +24,7 @@ const Index = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          transform: `translate(${panOffset.x * 0.7}px, ${panOffset.y * 0.7}px)`,
+          transform: `translate(${panOffset.x * 0.6}px, ${panOffset.y * 0.6}px)`,
           transition: 'transform 0.3s ease-out'
         }}
       />
