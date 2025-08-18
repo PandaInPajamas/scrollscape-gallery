@@ -3,7 +3,7 @@ import ImageModal, { Photo } from "@/components/ImageModal";
 
 // Import sample images
 import sample1 from "@/assets/sample1.jpg";
-import sample2 from "@/assets/2020_MORETHANVIZ_OPERA_13_HQ.jpg";
+import sample2 from "@/assets/2020_MORETHANVIZ_OPERA_15_HQ.jpg";
 import sample3 from "@/assets/sample3.jpg";
 import sample4 from "@/assets/sample4.jpg";
 import sample5 from "@/assets/sample5.jpg";
@@ -15,8 +15,8 @@ import bench3 from "@/assets/2020_MORETHANVIZ_BENCH_3_HQ.jpg";
 import opera01 from "@/assets/2020_MORETHANVIZ_OPERA_01_HQ.jpg";
 import opera07 from "@/assets/2020_MORETHANVIZ_OPERA_07_HQ.jpg";
 import opera09 from "@/assets/2020_MORETHANVIZ_OPERA_09_LQ.jpg";
-import opera13 from "@/assets/sample2.jpg";
-import opera15 from "@/assets/2020_MORETHANVIZ_OPERA_15_HQ.jpg";
+import opera13 from "@/assets/2020_MORETHANVIZ_OPERA_13_HQ.jpg";
+import opera15 from "@/assets/sample2.jpg";
 import opera18 from "@/assets/2020_MORETHANVIZ_OPERA_18_HQ.jpg";
 import opera21 from "@/assets/2020_MORETHANVIZ_OPERA_21_HQ.jpg";
 import sherbourne from "@/assets/2020_MORETHANVIZ_SHERBOURNE_2_LQ.jpg";
@@ -42,7 +42,7 @@ const initialPhotos: Photo[] = [
     height: 600,
   },
   {
-    id: "13",
+    id: "2",
     src: sample2,
     title: "Contemporary Glass Tower",
     description: "An urban landmark showcasing the marriage of steel and glass in modern architecture. The evening lighting creates a dramatic interplay of reflections and transparency, highlighting the building's sophisticated facade system.",
@@ -130,7 +130,7 @@ const initialPhotos: Photo[] = [
     height: 600,
   },
   {
-    id: "2",
+    id: "13",
     src: opera15,
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
@@ -322,7 +322,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const row = Math.floor(index / cols);
       
       // Vary sizes to create visual interest
-      const sizeMultipliers = [1.2, 0.8, 1.5, 1.0, 0.9, 1.2, 1.1, 0.7, 1.4, 0.95, 1.25, 0.85];
+      const sizeMultipliers = [1.2, 0.8, 1.5, 1.0, 0.9, 0.9, 1.1, 0.7, 1.4, 0.95, 1.25, 0.85];
       const sizeMultiplier = sizeMultipliers[index % sizeMultipliers.length];
       const width = baseSize * sizeMultiplier * zoom;
       const height = (baseSize * sizeMultiplier * zoom * photo.height) / photo.width;
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "1500vw", height: "1500vh" }}>
+        <div className="relative" style={{ width: "800vw", height: "800vh" }}>
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
