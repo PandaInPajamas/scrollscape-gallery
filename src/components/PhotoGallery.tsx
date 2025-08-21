@@ -134,8 +134,8 @@ const initialPhotos: Photo[] = [
     src: opera15,
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
-    width: 600,
-    height: 650,
+    width: 500,
+    height: 600,
   },
   {
     id: "14",
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "800vw", height: "800vh" }}>
+        <div className="relative" style={{ width: "300vw", height: "300vh" }}>
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
