@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "300vw", height: "300vh" }}>
+        <div className="relative" style={{ width: "100vw", height: "100vh" }}>
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
