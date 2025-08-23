@@ -134,8 +134,8 @@ const initialPhotos: Photo[] = [
     src: opera15,
     title: "MORETHANVIZ Opera Lobby",
     description: "Pre-performance gathering space designed to build anticipation and community. The architecture serves as a transitional realm between the everyday city and the transformative performance space.",
-    width: 500,
-    height: 600,
+    width: 450,
+    height: 500,
   },
   {
     id: "14",
@@ -347,8 +347,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const parallaxX = panOffset.x * parallaxMultiplierX * 0.5 * (1 + Math.abs(distanceFromCenterX) * 0.1);
       const parallaxY = panOffset.y * parallaxMultiplierY * 0.5 * (1 + Math.abs(distanceFromCenterY) * 0.1);
 
-      const x = baseX + parallaxX - 500;
-      const y = baseY + parallaxY + 600 - 1000;
+      const x = baseX + parallaxX - 0;
+      const y = baseY + parallaxY + 0 - 0;
 
       return {
         ...photo,
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "100vw", height: "100vh" }}>
+        <div className="relative" style={{ width: "150vw", height: "100vh" }}>
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
