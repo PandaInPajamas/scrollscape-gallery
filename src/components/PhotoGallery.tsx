@@ -322,7 +322,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const row = Math.floor(index / cols);
       
       // Vary sizes to create visual interest
-      const sizeMultipliers = [1.2, 0.8, 1.5, 1.0, 0.9, 0.9, 1.1, 0.7, 1.4, 0.95, 1.25, 0.85];
+      const sizeMultipliers = [1, 0.8, 1.5, 1.0, 0.9, 0.9, 1.1, 0.7, 1.4, 0.95, 1.25, 0.85];
       const sizeMultiplier = sizeMultipliers[index % sizeMultipliers.length];
       const width = baseSize * sizeMultiplier * zoom;
       const height = (baseSize * sizeMultiplier * zoom * photo.height) / photo.width;
