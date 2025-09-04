@@ -261,7 +261,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       const zoomSpeed = 0.1;
-      const newZoom = Math.max(1, Math.min(1.5, zoom + (e.deltaY > 0 ? -zoomSpeed : zoomSpeed)));
+      const newZoom = Math.max(1.2, Math.min(1.5, zoom + (e.deltaY > 0 ? -zoomSpeed : zoomSpeed))); //zoom range
       setZoom(newZoom);
     };
 
@@ -365,7 +365,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   };
 
   const layoutPhotos = calculateLayout();
-
+//line 378 adjust view port size
   return (
     <>
       <div
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "180vw", height: "180vh" }}>
+        <div className="relative" style={{ width: "230vw", height: "230vh" }}> 
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
