@@ -233,7 +233,14 @@ const initialPhotos: Photo[] = [
     width: 900,
     height: 650,
   },
-  ,
+  {
+    id: "26",
+    src: icelandCoffee,
+    title: "MORETHANVIZ Iceland Coffee House",
+    description: "Nordic-inspired coffee house that creates a warm gathering place in the harsh Icelandic climate. The design celebrates both local materials and the universal human need for community.",
+    width: 750,
+    height: 600,
+  },
 ];
 
 interface PhotoGalleryProps {
