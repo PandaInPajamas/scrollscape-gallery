@@ -251,7 +251,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: -12.5, y: -50 }); // Center on sample 2 image
+  const [panOffset, setPanOffset] = useState({ x: -25, y: -55 }); // Center on sample 2 image
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
