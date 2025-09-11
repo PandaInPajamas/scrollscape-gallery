@@ -251,7 +251,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
   const [zoom, setZoom] = useState(1.8); // Start heavily zoomed in on sample 2
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [photos] = useState<Photo[]>([...initialPhotos, ...uploadedPhotos]);
-  const [panOffset, setPanOffset] = useState({ x: -23, y: -80 }); // Center on sample 2 image. more negative x to left
+  const [panOffset, setPanOffset] = useState({ x: -23.5, y: -80 }); // Center on sample 2 image. more negative x to left
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   
@@ -375,7 +375,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
           cursor: isDragging ? "grabbing" : "default"
         }}
       >
-        <div className="relative" style={{ width: "160vw", height: "160vh" }}> 
+        <div className="relative" style={{ width: "140vw", height: "150vh" }}> 
           <div 
             className="absolute inset-0 flex items-center justify-center" 
             style={{ 
