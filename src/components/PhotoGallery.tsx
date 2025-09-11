@@ -29,7 +29,7 @@ import yaleBp from "@/assets/2023_MORETHANVIZ_YALEBP2023_1_LQ.jpg";
 import yaleDsr from "@/assets/2023_MORETHANVIZ_YALE_DSR_13_LQ.jpg";
 import studyAh from "@/assets/2024_MORETHANVIZ_STUDY_AH_01_HQ.png";
 import gsdInt from "@/assets/2025_MORETHANVIZ_GSD INT1.jpg";
-import icelandCoffee from "@/assets/2025_MORETHANVIZ_ICELAND COFFEE HOUSE_3.jpg";
+
 
 
 const initialPhotos: Photo[] = [
@@ -232,14 +232,6 @@ const initialPhotos: Photo[] = [
     description: "Graduate School of Design interior that reflects the institution's commitment to design excellence. The space serves as both learning environment and showcase for architectural innovation.",
     width: 900,
     height: 650,
-  },
-  {
-    id: "26",
-    src: icelandCoffee,
-    title: "MORETHANVIZ Iceland Coffee House",
-    description: "Nordic-inspired coffee house that creates a warm gathering place in the harsh Icelandic climate. The design celebrates both local materials and the universal human need for community.",
-    width: 750,
-    height: 600,
   },
 ];
 
