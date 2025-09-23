@@ -10,8 +10,29 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Upload from "./pages/Upload";
 import NotFound from "./pages/NotFound";
+import { useImagePreloader } from "./hooks/useImagePreloader";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  // Initialize image preloading when app starts
+  useImagePreloader();
+
+  return (
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/upload" element={<Upload />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -19,16 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/upload" element={<Upload />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
