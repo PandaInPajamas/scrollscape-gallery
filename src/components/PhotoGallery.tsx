@@ -28,7 +28,7 @@ import cb2 from "@/assets/2022_MORETHANVIZ_CB_2_HQ.jpg";
 import yaleBp from "@/assets/2023_MORETHANVIZ_YALEBP2023_1_LQ.jpg";
 import yaleDsr from "@/assets/2023_MORETHANVIZ_YALE_DSR_13_LQ.jpg";
 import studyAh from "@/assets/2024_MORETHANVIZ_STUDY_AH_01_HQ.png";
-import gsdInt from "@/assets/2025_MORETHANVIZ_GSD INT1.jpg";
+import gsdInt from "@/assets/2025_MORETHANVIZ_GSD_INT1.jpg";
 
 
 
