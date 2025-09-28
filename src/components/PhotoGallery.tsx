@@ -388,6 +388,7 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
                   alt={photo.title}
                   className="w-full h-full object-cover select-none pointer-events-none"
                   style={{ imageRendering: 'pixelated' }}
+                  loading="lazy"
                   draggable={false}
                 />
               </div>

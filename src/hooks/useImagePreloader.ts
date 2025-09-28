@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// Import all images that need to be preloaded - matching PhotoGallery imports exactly
+// Import all images that need to be preloaded
 import sample1 from "@/assets/sample1.jpg";
 import sample2 from "@/assets/2020_MORETHANVIZ_OPERA_15_HQ.jpg";
 import sample3 from "@/assets/sample3.jpg";
@@ -13,7 +13,6 @@ import opera01 from "@/assets/2020_MORETHANVIZ_OPERA_01_HQ.jpg";
 import opera07 from "@/assets/2020_MORETHANVIZ_OPERA_07_HQ.jpg";
 import opera09 from "@/assets/2020_MORETHANVIZ_OPERA_09_LQ.jpg";
 import opera13 from "@/assets/2020_MORETHANVIZ_OPERA_13_HQ.jpg";
-import opera15 from "@/assets/sample2.jpg"; // This matches PhotoGallery
 import opera18 from "@/assets/2020_MORETHANVIZ_OPERA_18_HQ.jpg";
 import opera21 from "@/assets/2020_MORETHANVIZ_OPERA_21_HQ.jpg";
 import sherbourne from "@/assets/2020_MORETHANVIZ_SHERBOURNE_2_LQ.jpg";
@@ -40,7 +39,6 @@ const imageUrls = [
   opera07,
   opera09,
   opera13,
-  opera15, // Now matches PhotoGallery
   opera18,
   opera21,
   sherbourne,
