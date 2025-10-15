@@ -1,4 +1,5 @@
 import PageHeader from "@/components/PageHeader";
+import aboutImage from "@/assets/about.jpg";
 
 const About = () => {
   return (
@@ -48,7 +49,7 @@ const About = () => {
                 {/* CEO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/about.jpeg"
+                    src={aboutImage}
                     alt="CEO"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
@@ -61,7 +62,7 @@ const About = () => {
                 {/* CTO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/about.jpeg"
+                    src={aboutImage}
                     alt="CTO"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
