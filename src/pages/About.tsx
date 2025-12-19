@@ -49,25 +49,24 @@ const About = () => {
                 <div className="flex flex-col items-center text-center">
                   <img
                     src="/src/assets/about.jpeg"
-                    alt="CEO"
+                    alt="Architect"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">diddy – CEO</h3>
+                  <h3 className="text-xl font-medium">chunky wunky</h3>
                   <p className="text-muted-foreground mt-2">
-                    he leads the vision of our studio with a passion for storytelling through architecture. With over 15 years in design and photography, she ensures every project speaks volumes.
-                  </p>
+                    he leads the vision of our studio with a passion for storytelling through architecture. He has two yeras of combined professional experience on international projects ranging from small scale exhibitions to urban masterplans.
                 </div>
 
                 {/* CTO */}
                 <div className="flex flex-col items-center text-center">
                   <img
                     src="/src/assets/about.jpeg"
-                    alt="CTO"
+                    alt="Architect"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">bob marley – CTO</h3>
+                  <h3 className="text-xl font-medium">big pp alvin</h3>
                   <p className="text-muted-foreground mt-2">
-                    he oversees the technical direction of our platform, blending creativity with engineering to make architectural content accessible, scalable, and innovative.
+                    he has a masters in architect and probably some other shit
                   </p>
                 </div>
               </div>
