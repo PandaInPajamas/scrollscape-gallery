@@ -55,6 +55,7 @@ const About = () => {
                   <h3 className="text-xl font-medium">chunky wunky</h3>
                   <p className="text-muted-foreground mt-2">
                     he leads the vision of our studio with a passion for storytelling through architecture. He has two yeras of combined professional experience on international projects ranging from small scale exhibitions to urban masterplans.
+                  </p>
                 </div>
 
                 {/* CTO */}
