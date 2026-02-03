@@ -92,8 +92,8 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
       const vw = containerRef.current.clientWidth;
       const vh = containerRef.current.clientHeight;
 
-      const offsetX = ((vw / 2 - photoX) / (vw * 1.4)) * 100;
-      const offsetY = (((vh / 2 - photoY) / (vh * 2.2)) * 100) - 5;
+      const offsetX = (((vw / 2 - photoX) / (vw * 1.4)) * 100) + 2;
+      const offsetY = (((vh / 2 - photoY) / (vh * 2.2)) * 100) - 6;
 
       setPanOffset({ x: offsetX, y: offsetY });
     };

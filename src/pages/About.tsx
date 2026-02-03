@@ -48,26 +48,26 @@ const About = () => {
                 {/* CEO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/about.jpeg"
+                    src="/src/assets/chunkywunky.jpg"
                     alt="Architect"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">chunky wunky</h3>
+                  <h3 className="text-xl font-medium">Byron Cai</h3>
                   <p className="text-muted-foreground mt-2">
-                    he leads the vision of our studio with a passion for storytelling through architecture. He has two yeras of combined professional experience on international projects ranging from small scale exhibitions to urban masterplans.
+                    Byron Cai is an architectural designer from Canada and currently based in USA. He has two years of professional experience working at internationally renowned architecture firms including OMA, Diller Scofidio + Renfro, 3XN, and KPMB. Byron holds a Bachelor of Architectural Studies from University of Waterloo [2022] and a Master of Architecture from Yale University [2025] where he was awarded the Gertraud A. Wood Fellowship. Byron is currently a designer at REX Architecture in New York City.
                   </p>
                 </div>
 
                 {/* CTO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/about.jpeg"
+                    src="/src/assets/alvinbgpp.jpg"
                     alt="Architect"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-medium">big pp alvin</h3>
+                  <h3 className="text-xl font-medium">Alvin Huang</h3>
                   <p className="text-muted-foreground mt-2">
-                    he has a masters in architect and probably some other shit
+                    Alvin JY Huang is an architectural designer born in Toronto, Ontario, Canada and is recognized for his achievements in the academic realm and professional industry experience. With numerous awards/publications  recognizing his excellence in visualization and academics along with over three years of experience in both visualization studios and architectural design offices, he has developed a comprehensive understanding of the industry and craft of architecture. Holding a Bachelor of Architectural Science with Distinction from Toronto Metropolitan University and currently pursuing a Masters of Architecture at Harvard University (GSD), Alvin is poised to make significant contributions to the architectural realm.
                   </p>
                 </div>
               </div>
