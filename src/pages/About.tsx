@@ -1,4 +1,7 @@
 import PageHeader from "@/components/PageHeader";
+import chunkphoto from "@/assets/chunkywunky.jpg";
+import melonphoto from "@/assets/alvinbgpp.jpg";
+
 
 const About = () => {
   return (
@@ -48,8 +51,8 @@ const About = () => {
                 {/* CEO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/chunkywunky.jpg"
-                    alt="Architect"
+                    src={chunkphoto}
+                    alt="Architect1"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
                   <h3 className="text-xl font-medium">Byron Cai</h3>
@@ -61,8 +64,8 @@ const About = () => {
                 {/* CTO */}
                 <div className="flex flex-col items-center text-center">
                   <img
-                    src="/src/assets/alvinbgpp.jpg"
-                    alt="Architect"
+                    src={melonphoto}
+                    alt="Architect2"
                     className="w-40 h-40 rounded-full mb-4 object-cover"
                   />
                   <h3 className="text-xl font-medium">Alvin Huang</h3>
