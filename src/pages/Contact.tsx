@@ -21,27 +21,21 @@ const Contact = () => {
             <div>
               <h2 className="text-2xl font-semibold mb-6">Get In Touch</h2>
               <p className="text-muted-foreground mb-8">
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                We'd love to hear from you. Send us a message and we'll respond as soon as possible. Preferred project lead time: 4 - 6 weeks in advance of deadline
               </p>
               
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-muted-foreground">hello@architecturegallery.com</p>
+                  <p className="text-muted-foreground">contact@morethanviz.studio</p>
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold">Phone</h3>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold">Address</h3>
-                  <p className="text-muted-foreground">
-                    123 Design Street<br />
-                    Creative District<br />
-                    New York, NY 10001
-                  </p>
+                  
                 </div>
               </div>
             </div>

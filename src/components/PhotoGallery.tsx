@@ -208,10 +208,10 @@ const PhotoGallery = ({ uploadedPhotos = [] }: PhotoGalleryProps) => {
               <div
                 key={photo.id}
                 className={`photo-item absolute overflow-hidden shadow-lg bg-white select-none ${
-                  photo.id === '13' ? 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
+                  photo.id === '13' ? 'pointer-events-none' : 'cursor-pointer hover:brightness-75 hover:scale-105 transition-all duration-300'
                 }`}
                 style={photo.style}
-                onClick={() => setSelectedPhoto(photo)}
+                onClick={photo.id === '13' ? undefined : () => setSelectedPhoto(photo)}
               >
                 <img
                   src={photo.src}
